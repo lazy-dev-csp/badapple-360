@@ -13,6 +13,9 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 frame_files = sorted([f for f in os.listdir(frames_dir) if f.endswith(".png")])
+total_frames = len(frame_files)
+
+print("[#] Found %d frames to process" % total_frames)
 
 for i, filename in enumerate(frame_files):
     img_path = os.path.join(frames_dir, filename)
@@ -40,17 +43,22 @@ for i, filename in enumerate(frame_files):
     output_filename = "frame_%06d.txt" % (i + 1)
     output_path = os.path.join(output_dir, output_filename)
     
-    with open(output_path, "w") as f:
-        f.write("\n".join(ascii_frame))
+    with open(output_path, "wb") as f:
+        f.write("\n".join(ascii_frame).encode("utf-8"))
     
     if (i + 1) % 100 == 0:
-        print("[#] Processed %d/%d frames" % (i + 1, len(frame_files)))
+        print("[#] Processed %d/%d frames" % (i + 1, total_frames))
 
-print("\n[#] Creating zip archive...")
+print("\n[#] Processed all %d frames" % total_frames)
+print("[#] Creating zip archive...")
+
+txt_files = sorted([f for f in os.listdir(output_dir) if f.endswith(".txt")])
+
 with zipfile.ZipFile("ascii_frames.zip", "w", zipfile.ZIP_DEFLATED) as zf:
-    for filename in sorted(os.listdir(output_dir)):
-        if filename.endswith(".txt"):
-            file_path = os.path.join(output_dir, filename)
-            zf.write(file_path, filename)
+    for idx, filename in enumerate(txt_files):
+        file_path = os.path.join(output_dir, filename)
+        zf.write(file_path, filename)
+        if (idx + 1) % 500 == 0:
+            print("[#] Zipped %d/%d files" % (idx + 1, len(txt_files)))
 
-print("[+] Created ascii_frames.zip")
+print("[+] Created ascii_frames.zip with %d frames"

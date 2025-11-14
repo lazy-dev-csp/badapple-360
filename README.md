@@ -5,7 +5,8 @@ Plays ASCII art animations on Xbox 360 running Free60 (or any low-memory system)
 ## Requirements
 
 - Python 2.6.6+
-- FFmpeg
+- Pillow  **install whit:** pip install pillow
+- FFmpeg  
 - A video file (works great with high-contrast videos like Bad Apple)
 
 ## Setup

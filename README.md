@@ -14,15 +14,23 @@ Plays ASCII art animations on Xbox 360 (or any low-memory system). Optimized for
 
 ```bash
 ffmpeg -i video.mp4 -filter:v fps=24 video_24fps.mp4
-2. Extract Frames
-mkdir frames
+```
+
+## 2. Extract Frames
+```bash mkdir frames
 ffmpeg -i video_24fps.mp4 -vf "scale=60:-1" frames/frame_%06d.png
-3. Convert Frames to ASCII
-python converter.py
+```
+
+# 3. Convert Frames to ASCII
+```bahs python converter.py
 This reads from frames/ and creates ascii_frames.zip
-4. Play the Animation
-python player.py
-Configuration
+```
+
+# 4. Play the Animation
+```bash python player.py
+```
+**Configuration**(optional if you followed the previous steps)
+
 Edit player.py to adjust:
 fps = 24 - Match your video's fps
 zip_path = "ascii_frames.zip" - Path to your ASCII frames
@@ -34,11 +42,13 @@ If playback freezes or stutters:
 Reduce frame width: scale=50:-1 or scale=40:-1
 Lower fps: fps=20
 Use less compression: zip -0 -r ascii_frames.zip ascii_frames/
-Memory usage guide:
-60 width @ 24fps: ~40-60MB
-50 width @ 24fps: ~30-45MB
-40 width @ 20fps: ~20-35MB
-How It Works
+**Memory usage guide:**
+60 width @ 24fps: ~7-5MB
+50 width @ 24fps: ~5-4MB
+40 width @ 20fps: ~4-3MB
+
+**How It Works:**
+
 Video is converted to static PNG frames
 Frames are converted to ASCII text files
 ASCII files are compressed into a zip

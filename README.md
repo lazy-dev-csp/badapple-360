@@ -28,7 +28,8 @@ ffmpeg -i video_24fps.mp4 -vf "scale=60:-1" frames/frame_%06d.png
 This reads from frames/ and creates ascii_frames.zip
 
 # 4. Play the Animation
-```bash python player.py
+```bash
+python player.py
 ```
 **Configuration**(optional if you followed the previous steps)
 

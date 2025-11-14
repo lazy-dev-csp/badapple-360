@@ -30,8 +30,12 @@ next_frame_time = start_time
 
 try:
     for idx, name in enumerate(frame_names):
+        frame_data = zf.read(name)
+        if isinstance(frame_data, bytes):
+            frame_data = frame_data.decode("utf-8")
+        
         write(cursor_home)
-        write(zf.read(name))
+        write(frame_data)
         flush()
         
         if idx % 500 == 0:

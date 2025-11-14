@@ -13,23 +13,30 @@ Plays ASCII art animations on Xbox 360 (or any low-memory system). Optimized for
 ### 1. Convert Video to 24fps
 
 ```bash
+
 ffmpeg -i video.mp4 -filter:v fps=24 video_24fps.mp4
+
 ```
 
 ## 2. Extract Frames
-```bash mkdir frames
+```bash
+mkdir frames
+
 ffmpeg -i video_24fps.mp4 -vf "scale=60:-1" frames/frame_%06d.png
+
 ```
 
 # 3. Convert Frames to ASCII
-```bahs python converter.py
+```bash
+
+python converter.py
+
 ```
 
 This reads from frames/ and creates ascii_frames.zip
 
 # 4. Play the Animation
-```bash
-python player.py
+```bash python player.py
 ```
 **Configuration**(optional if you followed the previous steps)
 

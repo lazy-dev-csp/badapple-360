@@ -36,21 +36,30 @@ python converter.py
 This reads from frames/ and creates ascii_frames.zip
 
 # 4. Play the Animation
-```bash python player.py
+```bash
+python player.py
+
 ```
 **Configuration**(optional if you followed the previous steps)
 
-Edit player.py to adjust:
-fps = 24 - Match your video's fps
-zip_path = "ascii_frames.zip" - Path to your ASCII frames
-Edit image_to_ascii.py to adjust:
-new_width = 60 - Must match the scale= value from step 2
-threshold = 128 - ASCII conversion threshold (good for high-contrast videos)
-Performance Tips
-If playback freezes or stutters:
-Reduce frame width: scale=50:-1 or scale=40:-1
-Lower fps: fps=20
-Use less compression: zip -0 -r ascii_frames.zip ascii_frames/
+**Edit player.py to adjust:**
+
+- fps = 24 - Match your video's fps
+- zip_path = "ascii_frames.zip" - Path to your ASCII frames
+
+**Edit converter.py to adjust:**
+
+- new_width = 60 - Must match the scale= value from step 2
+- threshold = 128 - ASCII conversion threshold (good for high-contrast videos)
+
+# Performance Tips:
+  
+**If playback freezes or stutters:**
+
+- Reduce frame width: scale=50:-1 or scale=40:-1
+- Lower fps: fps=20
+- Use less compression: zip -0 -r ascii_frames.zip ascii_frames/
+- 
 **Memory usage guide:**
 60 width @ 24fps: ~7-5MB
 50 width @ 24fps: ~5-4MB

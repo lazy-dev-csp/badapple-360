@@ -1,6 +1,6 @@
 # badapple-360
 
-Plays ASCII art animations on Xbox 360 (or any low-memory system). Optimized for 512MB RAM PowerPC systems whit python 2.6.6(may not work on newer systems)
+Plays ASCII art animations on Xbox 360 running Free60 (or any low-memory system). Optimized for 512MB RAM PowerPC systems whit python 2.6.6(may not work on newer systems)
 
 ## Requirements
 
